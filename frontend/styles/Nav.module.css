@@ -1,0 +1,38 @@
+.NavBarItems {
+    background: rgb(208, 208, 255);
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2;
+}
+
+.nav-menu {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    grid-gap: 10px;
+    list-style: none;
+    text-align: center;
+    width: 70vw;
+    justify-content: end;
+    margin-right: 2rem;
+}
+
+.fa-react {
+    margin-left: 0.5rem;
+    font-size: 1.6rem;
+}
+
+.menuIcon {
+    height: 40px;
+    width: 40px;
+    background-color: forestgreen;
+}
+
+.menu-x {
+    color: gold;
+}
+
+.menu-bars {
+    color: black;
+}
