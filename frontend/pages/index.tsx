@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import NavBar from '../components/NavBar'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
@@ -12,14 +13,22 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <NavBar />
+      
+      <header className={styles.header}>
+        <div>
+          <p>Hello</p>
+          
+        </div>
+      </header>
+
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Welcome to Educatr!
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
+          Educatr is a free knowledge-sharing website that allows everyone to learn and study from lessons added by educators, professors, and even general users!
         </p>
 
         <div className={styles.grid}>
