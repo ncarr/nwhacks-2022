@@ -29,5 +29,3 @@ public class Customer {
         "Customer[id=%s, firstName='%s', lastName='%s', userEmail = '%s', userName = '%s']",
         id, firstName, lastName , userEmail , userName );
   }
-
-}
