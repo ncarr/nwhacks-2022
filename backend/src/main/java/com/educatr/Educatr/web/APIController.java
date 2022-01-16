@@ -2,16 +2,21 @@ package com.educatr.Educatr.web;
 
 import java.util.List;
 
+import com.educatr.Educatr.Customer;
 import com.educatr.Educatr.CustomerRepository;
 import com.educatr.Educatr.LessonFile;
 import com.educatr.Educatr.LessonFileRepository;
+import com.educatr.Educatr.LessonInput;
 import com.educatr.Educatr.model.Message;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -54,8 +59,27 @@ public class APIController {
         return repository.findAll();
     }
 
+    @PostMapping(value = "/lessons")
+    public LessonFile createLesson(@RequestBody LessonInput input) {
+        input.lesson.id = null;
+        input.lesson.authorId = input.authorId;
+        Customer author = customerRepository.findById(input.authorId).get();
+        author.addlesson(input.lesson);
+        return repository.save(input.lesson);
+    }
+
     @GetMapping(value = "/subjects/{subject}")
     public List<LessonFile> findLessonsBySubject(@PathVariable("subject") String subject) {
         return repository.findBySubjects(subject);
+    }
+
+    @PatchMapping(value = "/users")
+    public Customer patchUser(@RequestBody Customer input) {
+        Customer customer = customerRepository.findById(input.id)
+                .orElseGet(() -> new Customer(input.firstName, input.lastName, input.userEmail, null));
+        customer.firstName = input.firstName;
+        customer.lastName = input.lastName;
+        customer.userEmail = input.userEmail;
+        return customerRepository.save(input);
     }
 }
