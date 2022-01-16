@@ -23,10 +23,12 @@ public class EducatrApplication implements CommandLineRunner {
 	@Override
   	public void run(String... args) throws Exception {
 
-		//lessonRepository.deleteAll();
+
 		repository.deleteAll();
 		customerRepository.deleteAll();
 
+
+		/*
 		LessonFile calc = new LessonFile("Calc" , "JSONSTUFF HERE Calc");
 		LessonFile engl = new LessonFile("English" , "JSONSTUFF HERE English");
 
@@ -74,7 +76,7 @@ public class EducatrApplication implements CommandLineRunner {
 		System.out.println();
 
 
-		/*
+
 
 		// fetch an individual customer
 		System.out.println("Customer found with findByFirstName('Alice'):");
