@@ -1,18 +1,7 @@
 import React from "react";
 import { useState } from "react"
 
-function QuestionEditor() {
-
-    const [value, setValue] = useState("")
-    const [isCorrect, setIsCorrect] = useState(false)
-
-    const handleOnChange = () => {
-        setIsCorrect(!isCorrect);
-    };
-
-    const handleSubmit = (isCorrect: string | boolean, value: string) => {
-        alert('A name was submitted: ' + value + isCorrect);
-    }
+function QuestionEditor({ value, setValue, index, isCorrect }) {
 
     return (
         <form>
@@ -22,20 +11,20 @@ function QuestionEditor() {
                     <input
                         type="text"
                         value={value}
-                        onChange={(e) => setValue(e.target.value)}
+                        onChange={(e) => setValue(e.target.value, isCorrect, index)}
                     />
                     <input
                         type="checkbox"
                         id="topping"
                         name="topping"
                         value="Correct Answer?"
-                        onChange={handleOnChange}
+                        // checked={!isCorrect}
+                        onChange={() => setValue(value, !isCorrect, index)}
                     />
                     Correct Answer
                 </label>
 
             </label>
-            <button className="answer-button" onClick={() => handleSubmit(isCorrect, value)}>Submit</button>
         </form>
     );
 
@@ -43,16 +32,36 @@ function QuestionEditor() {
 
 export default function QuestionEditorList() {
     const [questions, setQuestions] = React.useState([
-        (QuestionEditor),
-        (QuestionEditor),
-        (QuestionEditor)
+        { value: "", isCorrect: false },
+        { value: "", isCorrect: false },
+        { value: "", isCorrect: false }
     ]);
 
     const addQuestion = () => {
-        const newQuestion = [...questions, {QuestionEditor}];
-        setQuestions(newQuestion);
+        const newQuestions = [...questions, { value: "", isCorrect: false }];
+        setQuestions(newQuestions);
     }
 
+    const removeQuestion = index => {
+        const newQuestions = [...questions];
+        newQuestions.splice(index, 1);
+        setQuestions(newQuestions);
+    }
+
+    const handleSubmit = (questions: ((key: any, index: any) => JSX.Element)[]) => {
+        console.log('An answer was submitted: ', questions);
+    }
+
+    const setValue = (value, isCorrect, index) => {
+        setQuestions(questions.map((question, idx) => {
+            if (idx === index) {
+                return { ...question, value, isCorrect };
+            }
+            else {
+                return question;
+            }
+        }))
+    }
 
     return (
         <div className="app">
@@ -61,9 +70,14 @@ export default function QuestionEditorList() {
                     <QuestionEditor
                         key={index}
                         index={index}
+                        value={question.value}
+                        setValue={setValue}
+                        isCorrect={question.isCorrect}
                     />
                 ))}
-                <button className="question-add-button" onClick={() => addQuestion()}>YEET</button>
+                <button className="question-add-button" onClick={() => addQuestion()}>ADD</button>
+                <button className="question-add-button" onClick={() => removeQuestion(questions.length - 1)}>x</button>
+                <button className="answer-button" onClick={() => handleSubmit(questions)}>Submit</button>
             </div>
         </div>
     );

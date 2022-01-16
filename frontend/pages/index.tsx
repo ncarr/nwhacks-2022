@@ -28,7 +28,6 @@ const Home: NextPage = () => {
           <a href="/api/auth/logout">Logout</a> */}
         </h1>
         <Question />
-        <QuestionEditor />
         <QuestionEditorList />
 
         <p className={styles.description}>

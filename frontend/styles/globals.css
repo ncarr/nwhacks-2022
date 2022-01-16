@@ -96,6 +96,8 @@ a {
 
 .nav-links {
   color: white;
+  background:rgb(160, 160, 255);
+  cursor: pointer;
   text-decoration: none;
   /* padding: 0.5rem 1rem; */
 }
@@ -129,7 +131,7 @@ a {
       height: auto;
       position: absolute;
       top: 63px;
-      left: -100%;
+      left: -150%;
       opacity: 1;
       transition: all 0.5s ease;
       padding-inline-start: 0;
@@ -143,18 +145,19 @@ a {
       z-index: 1;
       justify-content: center;
       justify-self: center;
-      align-items: center;
+      align-items: left;
       align-self: center;
       
   }
 
   .nav-links {
       text-align: center;
-      justify-content: center;
-      justify-self: center;
+      justify-content: left;
+      justify-self: left;
       padding: 2rem;
       width: 100%;
       display: table;
+      font-size: 16px;
   }
 
   .nav-links:hover{
@@ -295,6 +298,7 @@ button.login-button {
   border: 5px solid #234668;
   cursor: pointer;
   margin-right: 15px;
+  font-size: 16px;
 }
 
 button.login-button:hover {

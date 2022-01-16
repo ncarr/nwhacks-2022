@@ -19,10 +19,10 @@ handleClick = () => {
                     <i className={this.state.clicked ? 'menu-x' : 'menu-bars'}>___.</i>
                 </div>
                 <ul className={this.state.clicked ? 'nav-menu active' : 'nav-menu'}>
-                    <li className="nav-links"><a href="https://google.com">Item 1</a></li>
-                    <li className="nav-links"><a href="https://google.com">Item 2</a></li>
-                    <li className="nav-links"><a href="https://google.com">Item 3</a></li>
-                    <li className="nav-links"><a href="https://google.com">Item 3</a></li>
+                    <li><a className="nav-links" href="https://google.com">Item 1</a></li>
+                    <li><a className="nav-links" href="https://google.com">Item 1</a></li>
+                    <li><a className="nav-links" href="https://google.com">Item 1</a></li>
+                    <li><a className="nav-links" href="https://google.com">Item 1</a></li>
                 </ul>
                 <button className="login-button"><a href="/api/auth/login">Login</a></button>
             </nav>
