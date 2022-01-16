@@ -14,20 +14,20 @@ public class Customer {
   public String userName;
 
 
-  public Customer() {}
+  public Customer() {
+  }
 
   public Customer(String firstName, String lastName, String userEmail, String userName) {
     this.firstName = firstName;
     this.lastName = lastName;
-    this.userEmail = userEmail; 
+    this.userEmail = userEmail;
     this.userName = userName;
   }
 
   @Override
   public String toString() {
     return String.format(
-        "Customer[id=%s, firstName='%s', lastName='%s', userEmail = '%s', userName = '%s']",
-        id, firstName, lastName , userEmail , userName );
+            "Customer[id=%s, firstName='%s', lastName='%s', userEmail = '%s', userName = '%s']",
+            id, firstName, lastName, userEmail, userName);
   }
-
 }

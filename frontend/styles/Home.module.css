@@ -2,6 +2,23 @@
   padding: 0 2rem;
 }
 
+.header {
+  background-color: #adddfd;
+  background-attachment: scroll;
+  background-position: top left, center, center;
+  background-repeat: repeat, repeat;
+  color: rgb(255, 255, 255);
+  height: 100%;
+  background-size: auto, cover;
+  left: auto;
+  padding: 6em 4em;
+  position: relative;
+  text-align: center;
+  top: auto;
+  width: 100%;
+  display: block;
+}
+
 .main {
   min-height: 100vh;
   padding: 4rem 0;
