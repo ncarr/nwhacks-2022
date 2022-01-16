@@ -15,7 +15,7 @@ export default function Question() {
     const [showCorrect, setShowCorrect] = useState(false);
     const [correct, setCorrect] = useState(false);
 
-    const handleAnswerOptionClick = (isCorrect) => {
+    const handleAnswerOptionClick = (isCorrect: boolean) => {
         if(isCorrect){
             setCorrect(true);
         }
