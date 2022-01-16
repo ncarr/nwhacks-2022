@@ -1,3 +1,4 @@
+// pages/api/auth/[...auth0].js
 import { handleAuth, handleLogin } from '@auth0/nextjs-auth0';
 
 export default handleAuth({
@@ -5,7 +6,7 @@ export default handleAuth({
         try {
             await handleLogin(req, res, {
                 authorizationParams: {
-                    audience: 'https://educatr/api', // or AUTH0_AUDIENCE
+                    audience: 'https://educatr/api/', // or AUTH0_AUDIENCE
                     // Add the `offline_access` scope to also get a Refresh Token
                     scope: 'openid profile email read:messages' // or AUTH0_SCOPE
                 }
