@@ -14,17 +14,22 @@ const Home: NextPage = () => {
       </Head>
 
       <NavBar />
-      
+
       <header className={styles.header}>
         <div>
           <p>Hello</p>
-          
+
         </div>
       </header>
 
       <main className={styles.main}>
         <h1 className={styles.title}>
           Welcome to Educatr!
+
+          auth0 login:
+          <a href="/api/auth/login">Login</a>
+
+          <a href="/api/auth/logout">Logout</a>
         </h1>
 
         <p className={styles.description}>
