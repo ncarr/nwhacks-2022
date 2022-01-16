@@ -59,6 +59,11 @@ public class APIController {
         return repository.findAll();
     }
 
+    @GetMapping(value = "/lessons/{lesson}")
+    public LessonFile findLessonById(@PathVariable("lesson") String lesson) {
+        return repository.findById(lesson).get();
+    }
+
     @PostMapping(value = "/lessons")
     public LessonFile createLesson(@RequestBody LessonInput input) {
         input.lesson.id = null;
@@ -66,6 +71,12 @@ public class APIController {
         Customer author = customerRepository.findById(input.authorId).get();
         author.addlesson(input.lesson);
         return repository.save(input.lesson);
+    }
+
+    @PatchMapping(value = "/lessons/{lesson}")
+    public LessonFile updateLesson(@RequestBody LessonFile input, @PathVariable("lesson") String id) {
+        input.id = id;
+        return repository.save(input);
     }
 
     @GetMapping(value = "/subjects/{subject}")
