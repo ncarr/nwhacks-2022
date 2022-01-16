@@ -34,6 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .mvcMatchers("/api/private").authenticated()
                 .mvcMatchers("/api/private-scoped").hasAuthority("SCOPE_read:messages")
                 .mvcMatchers(HttpMethod.GET, "/api/lessons").permitAll()
+                .mvcMatchers(HttpMethod.GET, "/subjects/{subject}").permitAll()
                 .and().cors()
                 .and().oauth2ResourceServer().jwt();
     }
