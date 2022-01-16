@@ -5,7 +5,7 @@ export default withApiAuthRequired(async function messages(req, res) {
     // If your Access Token is expired and you have a Refresh Token
     // `getAccessToken` will fetch you a new one using the `refresh_token` grant
 
-    var options = {
+    let options = {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: '{"client_id":"5Zc0qLubPf08TBBPq8mv6eaosYgif99M","client_secret":"1ZR5ldAWsEmDANRPtX3W6GjBHn2mgkNz_RkUQeY27YWN2ZOyzXdHwz7TLSlYg3CH","audience":"https://educatr/api","grant_type":"client_credentials"}' };
