@@ -1,6 +1,8 @@
 package com.educatr.Educatr;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+
 import java.util.ArrayList;
 
 public class Customer{
@@ -12,6 +14,7 @@ public class Customer{
   public String lastName;
   public String userEmail;
   public String userName;
+  @DBRef
   public ArrayList<LessonFile> lessons;
   public ArrayList<Courses> courses;
 

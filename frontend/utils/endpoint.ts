@@ -10,7 +10,7 @@ export const authenticatedFind = (uri: string) => withApiAuthRequired(async func
     const { accessToken } = await getAccessToken(req, res, {
         scopes: ['read:messages']
     });
-    const response = await fetch(new URL(uri, process.env.AUTH0_BASE_URL).href, {
+    const response = await fetch(new URL(uri, apiBaseUrl).href, {
         headers: {
             Authorization: `Bearer ${accessToken}`
         }

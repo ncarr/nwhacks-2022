@@ -27,8 +27,8 @@ public class EducatrApplication implements CommandLineRunner {
 		repository.deleteAll();
 		customerRepository.deleteAll();
 
-
 		/*
+
 		LessonFile calc = new LessonFile("Calc" , "JSONSTUFF HERE Calc");
 		LessonFile engl = new LessonFile("English" , "JSONSTUFF HERE English");
 
@@ -37,16 +37,31 @@ public class EducatrApplication implements CommandLineRunner {
 		calc.addquestion(addition);
 
 		calc.addSubject("Math");
-		calc.addSubject("Calculus");
 		engl.addSubject("English");
 
 		repository.save(calc);
 		repository.save(engl);
 
+
 		System.out.println("Customer found with findByFileName('Calc'):");
 		System.out.println("--------------------------------");
 		System.out.println(repository.findByFileName("Calc"));
 		System.out.println("");
+
+
+		calc.addSubject("Calculus");
+
+		repository.save(calc);
+
+
+
+		for (LessonFile lesson : repository.findAll()) {
+			System.out.println(lesson);
+		}
+		System.out.println();
+
+
+
 
 		Courses history = new Courses("History");
 		Courses science = new Courses("Science");

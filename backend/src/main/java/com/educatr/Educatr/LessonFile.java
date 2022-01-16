@@ -1,13 +1,16 @@
 package com.educatr.Educatr;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.ArrayList;
 
+@Document
 public class LessonFile {
 
   @Id
   public String id;
-
+  public String authorId;
   public String fileName;
   public String fileContents;
   public ArrayList<String> subjects;
@@ -61,8 +64,8 @@ public class LessonFile {
     }
 
     return String.format(
-        "LessonFile[id=%s, filename='%s', Subject list = '%s', Questions = '%s']",
-        id, fileName, subjectList, questionList);
+        "LessonFile[id=%s, filename='%s', Subject list = '%s', Questions = '%s', AuthorId = '%s']",
+        id, fileName, subjectList, questionList, authorId);
   }
 
 }
