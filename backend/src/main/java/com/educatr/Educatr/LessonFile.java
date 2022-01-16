@@ -1,48 +1,35 @@
 package com.educatr.Educatr;
 
-
 import org.springframework.data.annotation.Id;
 import java.util.ArrayList;
-
 
 public class LessonFile {
 
   @Id
-  private String id;
+  public String id;
 
   public String fileName;
-  //public File contentsOfLesson;
-  private String fileContents;
-  private ArrayList<String> classes;
-  private String classlist = "";
+  public String fileContents;
+  public ArrayList<String> subjects;
 
-  public LessonFile() {}
-
-  public LessonFile(String fileName //, File contentsOfLesson
-                    , String fileContents) {
+  public LessonFile(String fileName , String fileContents) {
     this.fileName = fileName;
-    //this.contentsOfLesson = contentsOfLesson;
     this.fileContents = fileContents;
-    this.classes = new ArrayList<>();
-
+    this.subjects = new ArrayList<>();
   }
 
-  public boolean addtoclass(String newClass){
-    if(!classes.contains(newClass)){
-      return this.classes.add(newClass);
+  public boolean addSubject(String newClass){
+    if(!subjects.contains(newClass)){
+      return this.subjects.add(newClass);
 
     }
     return false;
   }
 
-  public ArrayList<String> getclasses(){
-    return new ArrayList<String>(classes);
-  }
-
-  public boolean removeclass(String removeClass){
-    for(int i = 0; i < classes.size();i++){
-      if(classes.get(i).equals(removeClass)){
-        classes.remove(i);
+  public boolean removeSubject(String removeClass){
+    for(int i = 0; i < subjects.size(); i++){
+      if(subjects.get(i).equals(removeClass)){
+        subjects.remove(i);
         return true;
       }
     }
@@ -51,17 +38,17 @@ public class LessonFile {
 
   @Override
   public String toString() {
-    String classlist = "";
-    for(int i = 0; i < classes.size(); i++){
+    String subjectList = "";
+    for(int i = 0; i < subjects.size(); i++){
       if(i != 0){
-        classlist += " , ";
+        subjectList += " , ";
       }
-      classlist += classes.get(i);
+      subjectList += subjects.get(i);
     }
 
     return String.format(
-        "LessonFile[id=%s, filename='%s', classlist = '%s']",
-        id, fileName, classlist);
+        "LessonFile[id=%s, filename='%s', Subject list = '%s']",
+        id, fileName, subjectList);
   }
 
 }

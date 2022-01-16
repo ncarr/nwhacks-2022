@@ -27,12 +27,14 @@ public class EducatrApplication implements CommandLineRunner {
 		repository.deleteAll();
 		customerRepository.deleteAll();
 
-
 		LessonFile calc = new LessonFile("Calc" , "JSONSTUFF HERE Calc");
 		LessonFile engl = new LessonFile("English" , "JSONSTUFF HERE English");
 
-		calc.addtoclass("Math");
-		calc.addtoclass("Calculus");
+		calc.addSubject("Math");
+		calc.addSubject("Calculus");
+		engl.addSubject("English");
+
+
 
 		repository.save(calc);
 		repository.save(engl);
@@ -43,7 +45,9 @@ public class EducatrApplication implements CommandLineRunner {
 		System.out.println(repository.findByFileName("Calc"));
 		System.out.println("");
 
-
+		Courses history = new Courses("History");
+		Courses science = new Courses("Science");
+		Courses APCalc = new Courses("AP CALC", calc);
 
 		// save a couple of customers
 
@@ -51,6 +55,10 @@ public class EducatrApplication implements CommandLineRunner {
 		Customer bob = new Customer("Bob", "Smith", "bob@gmail.com", "BobS");
 
 		alice.addlesson(calc);
+		alice.addcourse(APCalc);
+		alice.addcourse(history);
+		bob.addlesson(engl);
+		bob.addcourse(science);
 
 		customerRepository.save(alice);
 		customerRepository.save(bob);

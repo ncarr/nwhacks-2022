@@ -6,15 +6,14 @@ import java.util.ArrayList;
 public class Customer{
 
   @Id
-  private String id;
+  public String id;
 
-  private String firstName;
-  private String lastName;
-  private String userEmail;
-  private String userName;
-  private ArrayList<LessonFile> lessons;
-
-  public Customer() {}
+  public String firstName;
+  public String lastName;
+  public String userEmail;
+  public String userName;
+  public ArrayList<LessonFile> lessons;
+  public ArrayList<Courses> courses;
 
   public Customer(String firstName, String lastName, String userEmail, String userName) {
     this.firstName = firstName;
@@ -22,11 +21,19 @@ public class Customer{
     this.userEmail = userEmail;
     this.userName = userName;
     this.lessons = new ArrayList<>();
+    this.courses = new ArrayList<>();
   }
 
   public boolean addlesson(LessonFile newLesson){
     if(!lessons.contains(newLesson)){
       return this.lessons.add(newLesson);
+    }
+    return false;
+  }
+
+  public boolean addcourse(Courses course){
+    if(!courses.contains(course)){
+      return this.courses.add(course);
     }
     return false;
   }
@@ -50,10 +57,19 @@ public class Customer{
       }
       lessonlist += lessons.get(i).fileName;
     }
+
+    String courselist = "";
+    for(int i = 0; i < courses.size(); i++){
+      if(i != 0){
+        courselist += " , ";
+      }
+      courselist += courses.get(i).courseName;
+    }
+
     return String.format(
         "Customer[id=%s, firstName='%s', lastName='%s', userEmail = '%s', userName = '%s' " +
-                "lessons = '%s']",
-        id, firstName, lastName , userEmail , userName, lessonlist );
+                "lessons = '%s' , courses = '%s' ]",
+        id, firstName, lastName , userEmail , userName, lessonlist, courselist );
   }
 
 
