@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styles from '../styles/Nav.module.css'
+import { Button } from "./Button";
 
 class NavBar extends Component {
 state = {clicked: false}
@@ -10,17 +10,21 @@ handleClick = () => {
 
     render() {
         return(
-            <nav className={styles.NavBarItems}>
-                <h1>Nav Bar!<i className="fab fa-react"></i></h1>
+            <nav className="NavBarItems">
+                <div className="website-logo">
+                    LOGO_PLACEHOLDER
+                </div>
 
-                <div className={styles.menuIcon} onClick={this.handleClick}>
-                    <i className={this.state.clicked ? 'menu-x' : 'menu-bars'}>Hello</i>
+                <div className="menu-icon" onClick={this.handleClick}>
+                    <i className={this.state.clicked ? 'menu-x' : 'menu-bars'}>___.</i>
                 </div>
                 <ul className={this.state.clicked ? 'nav-menu active' : 'nav-menu'}>
-                    <li>Item 1</li>
-                    <li>Item 2</li>
-                    <li>Item 3</li>
+                    <li className="nav-links"><a href="https://google.com">Item 1</a></li>
+                    <li className="nav-links"><a href="https://google.com">Item 2</a></li>
+                    <li className="nav-links"><a href="https://google.com">Item 3</a></li>
+                    <li className="nav-links"><a href="https://google.com">Item 3</a></li>
                 </ul>
+                <Button><a href="https://google.com">Sign In</a></Button>
             </nav>
         )
         

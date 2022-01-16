@@ -14,13 +14,6 @@ const Home: NextPage = () => {
       </Head>
 
       <NavBar />
-      
-      <header className={styles.header}>
-        <div>
-          <p>Hello</p>
-          
-        </div>
-      </header>
 
       <main className={styles.main}>
         <h1 className={styles.title}>
