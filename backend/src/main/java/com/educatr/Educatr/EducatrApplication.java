@@ -102,4 +102,6 @@ public class EducatrApplication implements CommandLineRunner {
 
 		 */
   	}
+
 }
+

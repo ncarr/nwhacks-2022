@@ -15,6 +15,7 @@ public class Customer{
   public ArrayList<LessonFile> lessons;
   public ArrayList<Courses> courses;
 
+
   public Customer(String firstName, String lastName, String userEmail, String userName) {
     this.firstName = firstName;
     this.lastName = lastName;
@@ -67,10 +68,10 @@ public class Customer{
     }
 
     return String.format(
+
         "Customer[id=%s, firstName='%s', lastName='%s', userEmail = '%s', userName = '%s' " +
                 "lessons = '%s' , courses = '%s' ]",
         id, firstName, lastName , userEmail , userName, lessonlist, courselist );
   }
-
 
 }
