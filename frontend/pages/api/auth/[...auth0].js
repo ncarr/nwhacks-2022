@@ -6,7 +6,7 @@ export default handleAuth({
         try {
             await handleLogin(req, res, {
                 authorizationParams: {
-                    audience: 'https://educatr/api/', // or AUTH0_AUDIENCE
+                    audience: 'https://educatr/api', // or AUTH0_AUDIENCE
                     // Add the `offline_access` scope to also get a Refresh Token
                     scope: 'openid profile email read:messages' // or AUTH0_SCOPE
                 }
