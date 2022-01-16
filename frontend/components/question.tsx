@@ -37,8 +37,8 @@ export default function Question() {
                         </div>
                     </div>
                     <div className='answer-section'>
-                        {questions.answerOptions.map((answerOption) => (
-                            <button className="answer-button" onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
+                        {questions.answerOptions.map((answerOption, index) => (
+                            <button className="answer-button" key={index} onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
                         ))}
                     </div>
                 </>

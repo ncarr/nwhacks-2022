@@ -6,6 +6,7 @@ import Question from '../components/question'
 import QuestionEditor from '../components/questionEditor'
 import QuestionEditorList from '../components/questionEditorList'
 import styles from '../styles/Home.module.css'
+import Link from 'next/link' 
 
 const Home: NextPage = () => {
   return (
@@ -27,40 +28,37 @@ const Home: NextPage = () => {
 
           <a href="/api/auth/logout">Logout</a> */}
         </h1>
-        <Question />
-        <QuestionEditor />
-        <QuestionEditorList />
 
         <p className={styles.description}>
           Educatr is a free knowledge-sharing website that allows everyone to learn and study from lessons added by educators, professors, and even general users!
         </p>
 
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
+          <a href="/edit/1" className={styles.card}>
+            <h2>Create New Lesson &rarr;</h2>
+            <p>Make your new lesson from scratch about one of the subjects and add a question too!</p>
           </a>
 
           <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
+            <h2>View New Lessons &rarr;</h2>
+            <p>Explore latest interactive lessons in all subject areas!</p>
           </a>
 
           <a
             href="https://github.com/vercel/next.js/tree/canary/examples"
             className={styles.card}
           >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
+            <h2>Subjects &rarr;</h2>
+            <p>Look through our academic subject categories including math, science, English.</p>
           </a>
 
           <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+            href="/lessons/1"
             className={styles.card}
           >
-            <h2>Deploy &rarr;</h2>
+            <h2>Your Lessons &rarr;</h2>
             <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
+              View and edit the lessons you have created. 
             </p>
           </a>
         </div>

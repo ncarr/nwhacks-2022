@@ -3,6 +3,7 @@ import Prism from 'prismjs'
 import { useCallback, useMemo, useState } from "react";
 import { createEditor, Descendant, NodeEntry, Text, Range } from "slate";
 import { Slate, Editable, withReact } from "slate-react";
+import QuestionEditorList from '../../components/questionEditorList';
 import TextNode from '../../components/TextNode';
 import { CustomElement } from "../../slate";
 
@@ -14,9 +15,10 @@ export default function LessonEditor() {
         type: 'paragraph',
         children: [{ text: '' }],
     },];
-    const [content, setContent] = useState<Descendant[]>(initialValue);
+    const [content, setContent] = useState<Descendant[]>(initialValue); 
     const renderLeaf = useCallback(props => <TextNode {...props} />, []);
     const [title, setTitle] = useState('');
+    const [questionEditorList, setQ] = useState({QuestionEditorList})
     const setTitleCallback = useCallback(({ target }: { target: HTMLInputElement }) => setTitle(target.value), []);
     // TODO: build effect to load data from server with SWR, might need resetNodes function to update slate
     const saveLesson = useCallback(async () => {
@@ -85,6 +87,11 @@ export default function LessonEditor() {
                 />
             </Slate>
             <button onClick={saveLesson}>Save</button>
+
+            <QuestionEditorList
+                onChange={setQ}
+            />
+            <button className="login-button"><a href="/">Back</a></button>
         </>
     )
 }
