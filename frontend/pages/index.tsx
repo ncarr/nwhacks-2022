@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import NavBar from '../components/NavBar'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
@@ -12,15 +13,16 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className={styles.header}>
-        <div>
-          <p>Hello</p>
-        </div>
-      </header>
+      <NavBar />
 
       <main className={styles.main}>
         <h1 className={styles.title}>
           Welcome to Educatr!
+
+          auth0 login:
+          <a href="/api/auth/login">Login</a>
+
+          <a href="/api/auth/logout">Logout</a>
         </h1>
 
         <p className={styles.description}>
