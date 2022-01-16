@@ -7,7 +7,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
         return find('/api/lessons')(req, res);
     } else if (req.method === 'POST') {
         return withApiAuthRequired(async (req, res) => {
-            const { accessToken, user: { sid: authorId } } = getSession(req, res)!;
+            const { accessToken, user: { sub: authorId } } = getSession(req, res)!;
             const response = await fetch(new URL('/api/lessons', apiBaseUrl).href, {
                 method: 'POST',
                 body: JSON.stringify({

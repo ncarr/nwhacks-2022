@@ -69,8 +69,9 @@ public class APIController {
         input.lesson.id = null;
         input.lesson.authorId = input.authorId;
         Customer author = customerRepository.findById(input.authorId).get();
+        input.lesson = repository.save(input.lesson);
         author.addlesson(input.lesson);
-        return repository.save(input.lesson);
+        return input.lesson;
     }
 
     @PatchMapping(value = "/lessons/{lesson}")

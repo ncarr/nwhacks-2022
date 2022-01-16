@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import Prism from 'prismjs'
 import { useCallback, useMemo, useState } from "react";
 import { createEditor, Descendant, NodeEntry, Text, Range } from "slate";
@@ -6,6 +7,8 @@ import TextNode from '../../components/TextNode';
 import { CustomElement } from "../../slate";
 
 export default function LessonEditor() {
+    const router = useRouter();
+    const { slug } = router.query;
     const editor = useMemo(() => withReact(createEditor()), [])
     const initialValue: CustomElement[] = [{
         type: 'paragraph',
@@ -16,13 +19,29 @@ export default function LessonEditor() {
     const [title, setTitle] = useState('');
     const setTitleCallback = useCallback(({ target }: { target: HTMLInputElement }) => setTitle(target.value), []);
     // TODO: build effect to load data from server with SWR, might need resetNodes function to update slate
-    const saveLesson = useCallback(() => {
+    const saveLesson = useCallback(async () => {
         const data = {
-            title,
-            content
+            fileName: title,
+            fileContents: JSON.stringify(content)
         }
-        // send data to server with SWR
-    }, []);
+        if (slug === 'new') {
+            await fetch('/api/lessons', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+        } else {
+            await fetch(`/api/lessons/${slug}`, {
+                method: 'PATCH',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+        }
+    }, [slug, title, content]);
     // Markdown highlighter
     const decorate = useCallback(([node, path]: NodeEntry) => {
         const ranges: Range[] = []
