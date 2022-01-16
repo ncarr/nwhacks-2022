@@ -3,6 +3,7 @@ package com.educatr.Educatr.security;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -32,6 +33,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .mvcMatchers("/api/public").permitAll()
                 .mvcMatchers("/api/private").authenticated()
                 .mvcMatchers("/api/private-scoped").hasAuthority("SCOPE_read:messages")
+                .mvcMatchers(HttpMethod.GET, "/api/lessons").permitAll()
+                .mvcMatchers(HttpMethod.POST, "/api/lessons").authenticated()
+                .mvcMatchers(HttpMethod.GET, "/api/subjects/{subject}").permitAll()
+                .mvcMatchers(HttpMethod.PATCH, "/api/users").authenticated()
                 .and().cors()
                 .and().oauth2ResourceServer().jwt();
     }

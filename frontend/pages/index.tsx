@@ -2,6 +2,9 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import NavBar from '../components/NavBar'
+import Question from '../components/question'
+import QuestionEditor from '../components/questionEditor'
+import QuestionEditorList from '../components/questionEditorList'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
@@ -19,11 +22,14 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>
           Welcome to Educatr!
 
-          auth0 login:
+          {/* auth0 login:
           <a href="/api/auth/login">Login</a>
 
-          <a href="/api/auth/logout">Logout</a>
+          <a href="/api/auth/logout">Logout</a> */}
         </h1>
+        <Question />
+        <QuestionEditor />
+        <QuestionEditorList />
 
         <p className={styles.description}>
           Educatr is a free knowledge-sharing website that allows everyone to learn and study from lessons added by educators, professors, and even general users!

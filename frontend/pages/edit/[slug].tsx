@@ -11,8 +11,18 @@ export default function LessonEditor() {
         type: 'paragraph',
         children: [{ text: '' }],
     },];
-    const [value, setValue] = useState<Descendant[]>(initialValue);
+    const [content, setContent] = useState<Descendant[]>(initialValue);
     const renderLeaf = useCallback(props => <TextNode {...props} />, []);
+    const [title, setTitle] = useState('');
+    const setTitleCallback = useCallback(({ target }: { target: HTMLInputElement }) => setTitle(target.value), []);
+    // TODO: build effect to load data from server with SWR, might need resetNodes function to update slate
+    const saveLesson = useCallback(() => {
+        const data = {
+            title,
+            content
+        }
+        // send data to server with SWR
+    }, []);
     // Markdown highlighter
     const decorate = useCallback(([node, path]: NodeEntry) => {
         const ranges: Range[] = []
@@ -42,16 +52,20 @@ export default function LessonEditor() {
     }, [])
 
     return (
-        <Slate
-            editor={editor}
-            value={value}
-            onChange={setValue}
-        >
-            <Editable
-                decorate={decorate}
-                renderLeaf={renderLeaf}
-                placeholder="Start typing"
-            />
-        </Slate>
+        <>
+            <input placeholder='Add a title...' value={title} onChange={setTitleCallback} />
+            <Slate
+                editor={editor}
+                value={content}
+                onChange={setContent}
+            >
+                <Editable
+                    decorate={decorate}
+                    renderLeaf={renderLeaf}
+                    placeholder="Start typing"
+                />
+            </Slate>
+            <button onClick={saveLesson}>Save</button>
+        </>
     )
 }
