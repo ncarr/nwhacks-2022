@@ -119,9 +119,17 @@ a {
   transform: translate(-10000%, 0);
 }
 
+.logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-top: 50px;
+}
+
 @media screen and (max-width: 960px) {
   .NavBarItems{
       position: relative;
+      justify-content: left;
   }
   
   .nav-menu {
@@ -205,6 +213,10 @@ a {
     cursor: pointer;
     background-image: none;
   }
+
+  .logo {
+    margin-left: 50px;
+  }
 }
 
 /* Question */
@@ -216,7 +228,7 @@ a {
   height: min-content;
   border-radius: 15px;
   padding: 20px;
-  box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.75);
   display: flex;
   justify-content: space-evenly;
 }

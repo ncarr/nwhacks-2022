@@ -1,13 +1,32 @@
 import React from "react";
 import { useState } from "react"
 
+function QuestionTextEditor({ value, setValue }) {
+
+    return (
+        <form>
+            <br />
+            <label>
+                <label>Question: 
+                    <input
+                        type="text"
+                        value={value}
+                        onChange={(e) => setValue(e.target.value)}
+                    />
+                </label>
+            </label>
+        </form>
+    );
+
+}
+
 function QuestionEditor({ value, setValue, index, isCorrect }) {
 
     return (
         <form>
             <br />
             <label>
-                <label>Answer:
+                <label>Answer: 
                     <input
                         type="text"
                         value={value}
@@ -30,7 +49,12 @@ function QuestionEditor({ value, setValue, index, isCorrect }) {
 
 }
 
-export default function QuestionEditorList() {
+export default function QuestionEditorList({onChange}) {
+    if(!onChange){
+        onChange = (() => {});
+    }
+    const [questionText, setQuestionText] = React.useState("");
+
     const [questions, setQuestions] = React.useState([
         { value: "", isCorrect: false },
         { value: "", isCorrect: false },
@@ -40,16 +64,18 @@ export default function QuestionEditorList() {
     const addQuestion = () => {
         const newQuestions = [...questions, { value: "", isCorrect: false }];
         setQuestions(newQuestions);
+        onChange({questionText, questions});
     }
 
     const removeQuestion = index => {
         const newQuestions = [...questions];
         newQuestions.splice(index, 1);
         setQuestions(newQuestions);
+        onChange({questionText, questions});
     }
 
-    const handleSubmit = (questions: ((key: any, index: any) => JSX.Element)[]) => {
-        console.log('An answer was submitted: ', questions);
+    const handleSubmit = (questionText ,questions: ((key: any, index: any) => JSX.Element)[]) => {
+        console.log('An answer was submitted: ', questionText, questions);
     }
 
     const setValue = (value, isCorrect, index) => {
@@ -61,11 +87,23 @@ export default function QuestionEditorList() {
                 return question;
             }
         }))
+        onChange({questionText, questions});
+    }
+
+    const setQuestionValue = (value) => {
+        setQuestionText(value);
+        onChange({questionText, questions});
     }
 
     return (
-        <div className="app">
-            <div className="todo-list">
+        <div className="question-box">
+            <div>
+                <QuestionTextEditor 
+                    value={questionText}
+                    setValue={setQuestionValue}
+                />
+            </div>
+            <div className="questions-list">
                 {questions.map((question, index) => (
                     <QuestionEditor
                         key={index}
@@ -77,7 +115,7 @@ export default function QuestionEditorList() {
                 ))}
                 <button className="question-add-button" onClick={() => addQuestion()}>ADD</button>
                 <button className="question-add-button" onClick={() => removeQuestion(questions.length - 1)}>x</button>
-                <button className="answer-button" onClick={() => handleSubmit(questions)}>Submit</button>
+                <button className="question-add-button" onClick={() => handleSubmit(questionText, questions)}>Submit</button>
             </div>
         </div>
     );
