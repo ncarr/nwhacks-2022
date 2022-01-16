@@ -11,11 +11,17 @@ public class LessonFile {
   public String fileName;
   public String fileContents;
   public ArrayList<String> subjects;
+  public ArrayList<MCQuestion> questions;
 
   public LessonFile(String fileName , String fileContents) {
     this.fileName = fileName;
     this.fileContents = fileContents;
     this.subjects = new ArrayList<>();
+    this.questions = new ArrayList<>();
+  }
+
+  public boolean addquestion(MCQuestion question){
+    return questions.add(question);
   }
 
   public boolean addSubject(String newClass){
@@ -46,9 +52,17 @@ public class LessonFile {
       subjectList += subjects.get(i);
     }
 
+    String questionList = "";
+    for(int i = 0; i < questions.size(); i++){
+      if(i != 0){
+        questionList += " , ";
+      }
+      questionList += questions.get(i).questionText;
+    }
+
     return String.format(
-        "LessonFile[id=%s, filename='%s', Subject list = '%s']",
-        id, fileName, subjectList);
+        "LessonFile[id=%s, filename='%s', Subject list = '%s', Questions = '%s']",
+        id, fileName, subjectList, questionList);
   }
 
 }

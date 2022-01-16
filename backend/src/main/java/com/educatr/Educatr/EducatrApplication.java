@@ -30,15 +30,16 @@ public class EducatrApplication implements CommandLineRunner {
 		LessonFile calc = new LessonFile("Calc" , "JSONSTUFF HERE Calc");
 		LessonFile engl = new LessonFile("English" , "JSONSTUFF HERE English");
 
+		MCQuestion addition = new MCQuestion("What is 1+1?");
+
+		calc.addquestion(addition);
+
 		calc.addSubject("Math");
 		calc.addSubject("Calculus");
 		engl.addSubject("English");
 
-
-
 		repository.save(calc);
 		repository.save(engl);
-
 
 		System.out.println("Customer found with findByFileName('Calc'):");
 		System.out.println("--------------------------------");
