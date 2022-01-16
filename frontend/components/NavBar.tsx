@@ -24,7 +24,7 @@ handleClick = () => {
                     <li className="nav-links"><a href="https://google.com">Item 3</a></li>
                     <li className="nav-links"><a href="https://google.com">Item 3</a></li>
                 </ul>
-                <Button><a href="https://google.com">Sign In</a></Button>
+                <button className="login-button"><a href="/api/auth/login">Login</a></button>
             </nav>
         )
         
