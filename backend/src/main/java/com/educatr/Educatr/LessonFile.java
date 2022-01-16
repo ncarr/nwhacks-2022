@@ -64,8 +64,8 @@ public class LessonFile {
     }
 
     return String.format(
-        "LessonFile[id=%s, filename='%s', Subject list = '%s', Questions = '%s']",
-        id, fileName, subjectList, questionList);
+        "LessonFile[id=%s, filename='%s', Subject list = '%s', Questions = '%s', AuthorId = '%s']",
+        id, fileName, subjectList, questionList, authorId);
   }
 
 }
