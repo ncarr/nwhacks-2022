@@ -1,0 +1,19 @@
+.list {
+    padding-inline-start: 0.5em;
+    font-size: 1.25em;
+    line-height: 0.625em;
+}
+
+.hr {
+    display: block;
+    text-align: center;
+    border-block-end: 2px solid #ddd;
+}
+
+.blockquote {
+    display: inline-block;
+    border-inline-start: 2px solid #ddd;
+    padding-inline-start: 10px;
+    color: #aaa;
+    font-style: italic;
+}
