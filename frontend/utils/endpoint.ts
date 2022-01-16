@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 export const apiBaseUrl = 'http://localhost:3010'
 
-export const authenticatedGet = (uri: string) => withApiAuthRequired(async function messages(req: NextApiRequest, res: NextApiResponse) {
+export const authenticatedFind = (uri: string) => withApiAuthRequired(async function messages(req: NextApiRequest, res: NextApiResponse) {
     // If your Access Token is expired and you have a Refresh Token
     // `getAccessToken` will fetch you a new one using the `refresh_token` grant
 
@@ -19,8 +19,14 @@ export const authenticatedGet = (uri: string) => withApiAuthRequired(async funct
     res.status(200).json(messages);
 });
 
-export const get = (uri: string) => async function messages(req: NextApiRequest, res: NextApiResponse) {
+export const find = (uri: string) => async function messages(req: NextApiRequest, res: NextApiResponse) {
     const response = await fetch(new URL(uri, apiBaseUrl).href);
+    const messages = await response.json();
+    res.status(200).json(messages);
+};
+
+export const findOne = (uri: string) => async function messages(req: NextApiRequest, res: NextApiResponse) {
+    const response = await fetch(new URL(`${uri}/${req.query.id}`, apiBaseUrl).href);
     const messages = await response.json();
     res.status(200).json(messages);
 };

@@ -1,3 +1,3 @@
-import { get } from '../../utils/endpoint';
+import { find } from '../../utils/endpoint';
 
-export default get('/api/lessons');
+export default find('/api/lessons');
