@@ -15,6 +15,7 @@ const afterCallback = async (req, res, session, state) => {
             Authorization: `Bearer ${session.accessToken}`
         }
     });
+    return session
 }
 
 export default handleAuth({
